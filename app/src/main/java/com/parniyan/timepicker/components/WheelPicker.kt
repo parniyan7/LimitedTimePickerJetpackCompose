@@ -128,7 +128,7 @@ private fun WheelPicker(
     content: @Composable WheelPickerContentScope.(item: Int) -> Unit,
 ) {
     require(items.size >= 0) { "require count >= 0" }
-    require(unfocusedCount >= 0) { "require unfocusedCount >= 0" }
+    require(unfocusedCount >= 0) { "require unfocusedCount >= 0" } //you can change this number and pass whatever number you want as to show the grayed out digits
 
     LaunchedEffect(state, items) {
         state.updateCount(items)
