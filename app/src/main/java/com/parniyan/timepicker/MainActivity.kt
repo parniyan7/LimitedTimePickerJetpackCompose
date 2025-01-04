@@ -4,10 +4,12 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.parniyan.timepicker.components.BaseDurationPicker
@@ -34,19 +36,24 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-private const val MinimumTime = (1 * 60)
+private const val MinimumTime = (15 * 60)
 private const val MaximumTime = (23 * 60 * 60) + (59 * 60)
-private const val currentTime =((15 * 60) + (60 * 60)).toString()
+private const val currentTime = "13:45:00"
 @Composable
 fun Picker(modifier: Modifier) {
-    BaseDurationPicker(
-        current = TimeUtil.convertTimeToDuration(currentTime),
-        minimumSeconds = MinimumTime,
-        maximumSeconds = MaximumTime,
-        onConfirmClick = {
-            //do your action
-        }
-    )
+    Box(modifier = modifier
+        .fillMaxSize(),
+        contentAlignment = Alignment.Center
+    ){
+        BaseDurationPicker(
+            current = TimeUtil.convertTimeToDuration(currentTime),
+            minimumSeconds = MinimumTime,
+            maximumSeconds = MaximumTime,
+            onConfirmClick = {
+                //do your action
+            }
+        )
+    }
 }
 
 @Preview(showBackground = true)
