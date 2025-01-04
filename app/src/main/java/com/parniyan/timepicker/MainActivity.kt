@@ -36,9 +36,9 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-private const val MinimumTime = (15 * 60)
-private const val MaximumTime = (23 * 60 * 60) + (59 * 60)
-private const val currentTime = "13:45:00"
+private const val MinimumTime = (1 * 60 * 60) + (15 * 60)
+private const val MaximumTime = (22 * 60 * 60) + (45 * 60)
+private const val currentTime = "2:30:00"
 @Composable
 fun Picker(modifier: Modifier) {
     Box(modifier = modifier

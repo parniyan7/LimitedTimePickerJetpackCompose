@@ -1,6 +1,9 @@
 package com.parniyan.timepicker.components
 
 
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -14,8 +17,11 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Divider
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Text
+import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -27,9 +33,13 @@ import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
@@ -181,17 +191,25 @@ private fun BasePickerImpl(
                         textAlign = TextAlign.Center,
                         text = hours[index].padWithZero(),
                         style = TextStyle.Default,
-                        color = Color(0xFF888888)
+                        fontFamily = FontFamily(
+                            Font(R.font.f_pro_display_bold),
+                            Font(R.font.f_pro_display_bold, FontWeight.Bold)
+                        ),
+                        color = Color(0xFF222121)
                     )
                 })
 
             Text(
                 text = stringResource(id = R.string.hour_indicator),
-                color = Color(0xFF888888),
+                color = Color(0xFF222121),
                 style = TextStyle.Default,
-                textAlign = TextAlign.Center
+                textAlign = TextAlign.Center,
+                fontFamily = FontFamily(
+                    Font(R.font.f_pro_display_bold),
+                    Font(R.font.f_pro_display_bold, FontWeight.Bold)
+                )
             )
-            Divider(
+            VerticalDivider(
                 modifier = Modifier
                     .padding(horizontal = 32.dp, vertical = 6.dp)
                     .width(1.dp)
@@ -217,14 +235,22 @@ private fun BasePickerImpl(
                         textAlign = TextAlign.Center,
                         text = minutes[index].padWithZero(),
                         style = TextStyle.Default,
-                        color = Color(0xFF888888)
+                        fontFamily = FontFamily(
+                            Font(R.font.f_pro_display_bold),
+                            Font(R.font.f_pro_display_bold, FontWeight.Bold)
+                        ),
+                        color = Color(0xFF222121)
                     )
                 })
             Text(
                 text = stringResource(id = R.string.minute_indicator),
-                color = Color(0xFF888888),
+                color = Color(0xFF222121),
                 style = TextStyle.Default,
-                textAlign = TextAlign.Center
+                textAlign = TextAlign.Center,
+                fontFamily = FontFamily(
+                    Font(R.font.f_pro_display_bold),
+                    Font(R.font.f_pro_display_bold, FontWeight.Bold)
+                )
             )
 
         }
@@ -232,9 +258,23 @@ private fun BasePickerImpl(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(top = confirmButtonTopPadding, bottom = 20.dp)
+                .clip(shape = RoundedCornerShape(20.dp))
                 .clickable { onConfirmClick(formatTime(selectedHour, selectedMinute)) }
+                .background(color = Color(0xFF181717)),
+            contentAlignment = Alignment.Center
         ) {
-            Text(text = confirmButtonTitle)
+            Text(
+                modifier = Modifier
+                    .padding(16.dp),
+                text = confirmButtonTitle,
+                style = TextStyle.Default,
+                textAlign = TextAlign.Center,
+                fontFamily = FontFamily(
+                    Font(R.font.f_pro_display_bold),
+                    Font(R.font.f_pro_display_bold, FontWeight.Bold)
+                ),
+                color = Color.White
+                )
         }
     }
 
