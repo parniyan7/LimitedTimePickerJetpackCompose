@@ -7,11 +7,12 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.parniyan.timepicker.components.BaseDurationPicker
 import com.parniyan.timepicker.ui.theme.TimePickerTheme
+import com.parniyan.timepicker.util.TimeUtil
 
 
 /**
@@ -27,28 +28,31 @@ class MainActivity : ComponentActivity() {
         setContent {
             TimePickerTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                    Picker(modifier = Modifier.padding(innerPadding))
                 }
             }
         }
     }
 }
-
+private const val MinimumTime = (1 * 60)
+private const val MaximumTime = (23 * 60 * 60) + (59 * 60)
+private const val currentTime =((15 * 60) + (60 * 60)).toString()
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
+fun Picker(modifier: Modifier) {
+    BaseDurationPicker(
+        current = TimeUtil.convertTimeToDuration(currentTime),
+        minimumSeconds = MinimumTime,
+        maximumSeconds = MaximumTime,
+        onConfirmClick = {
+            //do your action
+        }
     )
 }
 
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview() {
+fun PickerPreview() {
     TimePickerTheme {
-        Greeting("Android")
+        Picker(modifier = Modifier.fillMaxSize())
     }
 }
