@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">TimePicker</string>
+    <string name="hour_indicator">h</string>
+    <string name="minute_indicator">m</string>
+    <string name="duration_picker_confirm_button">Continue</string>
+</resources>
